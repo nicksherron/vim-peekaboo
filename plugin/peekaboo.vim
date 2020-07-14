@@ -20,8 +20,6 @@
 " OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 " THE SOFTWARE.
 
-nnoremap <silent> <Plug>(peekaboo) :<c-u>call peekaboo#aboo()<cr>
-xnoremap <silent> <Plug>(peekaboo) :<c-u>call peekaboo#aboo()<cr>
 inoremap <silent> <Plug>(peekaboo) <c-\><c-o>:<c-u>call peekaboo#aboo()<cr>
 
 function! peekaboo#on()
@@ -31,9 +29,6 @@ function! peekaboo#on()
 
   let prefix = get(g:, 'peekaboo_prefix', '')
   let ins_prefix = get(g:, 'peekaboo_ins_prefix', '')
-  execute 'nmap <buffer> <expr> '.prefix.    '"     peekaboo#peek(v:count1, ''"'',  0)'
-  execute 'xmap <buffer> <expr> '.prefix.    '"     peekaboo#peek(v:count1, ''"'',  1)'
-  execute 'nmap <buffer> <expr> '.prefix.    '@     peekaboo#peek(v:count1, ''@'', 0)'
   execute 'imap <buffer> <expr> '.ins_prefix.'<c-r> peekaboo#peek(1, "\<c-r>",  0)'
   let b:peekaboo_on = 1
   return ''
@@ -46,9 +41,6 @@ function! peekaboo#off()
 
   let prefix = get(g:, 'peekaboo_prefix', '')
   let ins_prefix = get(g:, 'peekaboo_ins_prefix', '')
-  execute 'nunmap <buffer> '.prefix.'"'
-  execute 'xunmap <buffer> '.prefix.'"'
-  execute 'nunmap <buffer> '.prefix.'@'
   execute 'iunmap <buffer> '.ins_prefix.'<c-r>'
   let b:peekaboo_on = 0
 endfunction
